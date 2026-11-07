@@ -3,185 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Cup of Happy Header</title>
+    <title>A Cup of Happy</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Playfair Display SC', serif;
-            background-color: #f4f4f4;
-        }
-
-        /* 1. Header Background (Full Width) */
-        .site-header {
-            background-color: #ffffff;
-            width: 100%;
-            height: 70px; 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        /* 2. Header Container (Restricted Width) */
-        .header-container {
-            max-width: 1200px; 
-            margin: 0 auto;    
-            padding: 0 20px;   
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Logo Styling (Pacifico) */
-        .logo {
-            font-family: 'Pacifico', cursive;
-            font-size: 32px; 
-            color: #111;
-            text-decoration: none;
-            line-height: 1;
-            padding-top: 8px; 
-        }
-
-        /* Navigation Styling (Playfair Display SC) */
-        .main-nav ul {
-            list-style: none;
-            display: flex;
-            gap: 35px; 
-            height: 100%; 
-        }
-
-        .main-nav li {
-            display: flex;
-            align-items: center;
-        }
-
-        .main-nav a {
-            text-decoration: none;
-            color: #111;
-            font-size: 15px; 
-            letter-spacing: 1.5px;
-            text-transform: uppercase; 
-            position: relative;
-            padding-bottom: 6px; 
-            transition: color 0.3s ease;
-        }
-
-        /* The orange underline for the active state */
-        .main-nav a.active {
-            color: #111;
-        }
-
-        .main-nav a.active::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #dca554; 
-        }
-
-        /* Hover effect */
-        .main-nav a:not(.active):hover {
-            color: #dca554;
-        }
-
-        /* 3. Icons Styling (Matching the Design Exactly) */
-        .header-icons {
-            display: flex;
-            align-items: center;
-            gap: 25px; /* Precise spacing from image */
-        }
-
-        .header-icons a {
-            color: #111;
-            font-size: 20px; /* Slightly larger to match image proportions */
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* The Search Icon (Thin Stroke) */
-        /* Using a slightly bolder stroke than the default FontAwesome */
-        .icon-search {
-            font-size: 20px;
-        }
-
-        /* The User Icon (Outline/Thin) */
-        .icon-user {
-            font-size: 19px;
-        }
-
-        /* The Cart Icon (Solid/Flat) */
-        .icon-cart {
-            font-size: 18px; 
-            margin-left: 2px; /* Slight adjustment to align cart body */
-        }
-
-        .header-icons a:hover {
-            color: #dca554;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .site-header {
-                height: auto; 
-                padding: 15px 0;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        pacifico: ['Pacifico', 'cursive'],
+                        playfair: ['"Playfair Display SC"', 'serif'],
+                    },
+                    colors: {
+                        brand: '#dca554',
+                    }
+                }
             }
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .nav-link {
+                @apply text-[#111] text-[15px] tracking-[1.5px] uppercase transition-colors duration-300 hover:text-brand;
             }
-            .main-nav ul {
-                gap: 15px;
+            .icon-btn {
+                @apply text-[#111] transition-colors duration-300 hover:text-brand flex items-center justify-center;
+            }
+            .icon-svg {
+                @apply stroke-current stroke-2 fill-none w-[22px] h-[22px];
             }
         }
     </style>
 </head>
-<body>
+<body class="bg-[#f4f4f4] font-playfair">
 
-    <header class="site-header">
-        <div class="header-container">
+    <header class="w-full h-[70px] bg-white shadow-sm">
+        <div class="max-w-[1200px] mx-auto px-5 h-full flex items-center justify-between">
             
-            <!-- Logo -->
-            <a href="#" class="logo">A Cup of Happy</a>
+            <a href="/" class="font-pacifico text-[32px] text-[#111] leading-none">
+                A Cup of Happy
+            </a>
 
-            <!-- Navigation Menu -->
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Store</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Blog</a></li>
+            <nav class="h-full">
+                <ul class="flex gap-[35px] h-full items-center">
+                    <li class="h-full flex items-center">
+                        <a href="/" class="nav-link relative flex items-center h-full">
+                            Home
+                            <span class="absolute left-0 bottom-[20px] w-full h-[2px] bg-brand"></span>
+                        </a>
+                    </li>
+                    <li><a href="/store" class="nav-link">Store</a></li>
+                    <li><a href="/about" class="nav-link">About Us</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                    <li><a href="/blog" class="nav-link">Blog</a></li>
                 </ul>
             </nav>
 
-            <!-- Icons matching your specific design -->
-            <div class="header-icons">
-                <!-- Thin Search (using FontAwesome thin style via CSS) -->
-                <a href="#" class="icon-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <div class="flex items-center gap-6">
+                <a href="/search" class="icon-btn" aria-label="Search">
+                    <svg class="icon-svg" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <circle cx="10" cy="10" r="7"></circle>
+                        <line x1="15" y1="15" x2="21" y2="21"></line>
+                    </svg>
+                </a>
                 
-                <!-- Outlined User Icon (like in your image) -->
-                <a href="#" class="icon-user"><i class="fa-regular fa-user"></i></a>
+                <a href="/profile" class="icon-btn" aria-label="Profile">
+                    <svg class="icon-svg" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="3.5"></circle>
+                        <path d="M5 21v-1c0-3.5 3-6 7-6s7 2.5 7 6v1"></path>
+                    </svg>
+                </a>
                 
-                <!-- Solid Flat Cart Icon (like in your image) -->
-                <a href="#" class="icon-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="/cart" class="icon-btn" aria-label="Cart">
+                    <svg class="icon-svg w-6 h-6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.8h7.2a2 2 0 0 0 2-1.7L21 8H6"></path>
+                        <circle cx="9" cy="21" r="1.5" class="fill-current stroke-none"></circle>
+                        <circle cx="18" cy="21" r="1.5" class="fill-current stroke-none"></circle>
+                    </svg>
+                </a>
             </div>
 
         </div>
